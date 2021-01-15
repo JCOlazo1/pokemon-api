@@ -55,3 +55,7 @@ button {
   cursor: pointer;
   align-self: flex-end;
 }
+
+h1 {
+  color: rgb(83, 183, 223);
+}

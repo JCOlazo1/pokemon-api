@@ -3,7 +3,10 @@
 
 /* GLOBAL VARIABLES */
 let pokemon;
-const pokeText = document.getElementById('pkmnData');
+const pkmnImage;
+const pokeTextName = document.getElementById('pkmnName');
+const pokeTextDexNo = document.getElementById('pkmnDexNo');
+const pokeTextType = document.getElementById('pkmnType');
 
 // uses 'pokemon' GV
 function inputPokemon() {
@@ -11,18 +14,15 @@ function inputPokemon() {
 }
 
 async function getPokeData() {
-    const pokeData = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`, {
-        headers: {
-            'Accept': 'application/json'
-        }
-    });
+    const pokeData = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`, {});
     const pokeObj = await pokeData.json();
-    pokeText.innerHTML = pokeObj.name;
-    console.log('if you see this in console, code works!');
+    pokeTextName.innerHTML = pokeObj.name;
+    pokeTextDexNo.innerHTML = pokeObj.id;
+    pokeTextType.innerHTML = pokeObj.types[0].type.name;
+    console.log(pokeObj);
 }
 
 /**TODO:
- * 1. display ALL the data I want (name, type, pokedex #, abilities, stats->base_stat)
  * 2. make the display look nice
- * 3. github it
- */
+ * 2b. check out 'pokeapi-js-wrapper' --install it
+ */ 

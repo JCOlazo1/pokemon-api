@@ -8,7 +8,13 @@
 <body>
     <section>
     <div class="container">
-        <div class="pkmnData" id="pkmnData"><p> Pokemon Data displayed here! </p></div>
+        <div class="picture" id="pkmnImage"></div>
+        <h1>Pokemon:</h1>
+        <div class="pkmnData" id="pkmnName"><p> ___ </p></div>
+        <h1>Pokedex Number:</h1>
+        <div class="pkmnData" id="pkmnDexNo"><p> ___ </p></div>
+        <h1>Pokemon Type:</h1>
+        <div class="pkmnData" id="pkmnType"><p> ___ </p></div>
             <button type="button" id="pkmn" onClick="inputPokemon()">Choose a Pokemon</button>
             <button type="button" id="getter" onClick="getPokeData()">Get Data</button>
          </div>
@@ -17,3 +23,5 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+<!-- 1. display ALL the data I want (name, type, pokedex #, abilities, stats->base_stat) -->

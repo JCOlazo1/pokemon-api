@@ -3,14 +3,13 @@
 
 /* GLOBAL VARIABLES */
 let pokemon;
-const pkmnImage;
 const pokeTextName = document.getElementById('pkmnName');
 const pokeTextDexNo = document.getElementById('pkmnDexNo');
 const pokeTextType = document.getElementById('pkmnType');
 
 // uses 'pokemon' GV
 function inputPokemon() {
-    pokemon = prompt("Type a Pokemon's Name or Number");
+    pokemon = prompt("Type a Pokemon's Name or Number").toLowerCase();
 }
 
 async function getPokeData() {
@@ -18,11 +17,20 @@ async function getPokeData() {
     const pokeObj = await pokeData.json();
     pokeTextName.innerHTML = pokeObj.name;
     pokeTextDexNo.innerHTML = pokeObj.id;
-    pokeTextType.innerHTML = pokeObj.types[0].type.name;
-    console.log(pokeObj);
+
+    // HOW TO DIFFERENTIATE DUAL TYPED POKEMON TO SHOW UP:
+    if(!pokeObj.types[1]) {
+        pokeTextType.innerHTML = pokeObj.types[0].type.name;
+    } else {
+        pokeTextType.innerHTML = pokeObj.types[0].type.name + " / " + pokeObj.types[1].type.name;
+    }
+
+    // display the Pokemon:
+    document.getElementById("image").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeObj.id}.svg`;
 }
 
-/**TODO:
- * 2. make the display look nice
- * 2b. check out 'pokeapi-js-wrapper' --install it
- */ 
+/** TODO:
+ * 1. Error handling: if user input is not a valid Pokemon/Pokdex#
+ * 2. re-format the buttons to be beside the data instead of below b/c scrolling is annoying
+ * 3. 
+ */
